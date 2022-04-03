@@ -97,7 +97,6 @@ function guess(){
         }, 300*i);
     }
     if(guess === foobar.join("")) {
-        win(row)
         return
     }
     else{
@@ -108,4 +107,13 @@ function guess(){
     if(guessesRemaining === 0){
         document.getElementById("h1").textContent=currentGuess.join('')
     }
+    removeAllClasses();
+}
+
+function removeAllClasses(){
+    sleep(500)
+    let elems = document.getElementById("keys").children
+    elems.forEach(element => {
+        element.removeAllClasses();
+    });
 }
