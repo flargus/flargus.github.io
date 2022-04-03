@@ -26,8 +26,8 @@ h1{
     font-size: 2rem;
     font-family: sans-serif;
     font-weight: 700;
-    height: 4rem;
-    width: 4rem;
+    height: 3.5rem;
+    width: 3.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,18 +35,17 @@ h1{
 
 }
 .button{
-    font-size: 1rem;
     background-color:rgb(129, 131, 132);
     color: whitesmoke;
     font-family: sans-serif;
-    padding: 1rem;
+    padding: 0.6rem;
     font-weight: 700;
     font-size: 0.75rem;
     margin: 0 0.15rem;
     cursor: pointer;
     text-transform: uppercase;
     border: 1px solid black;
-    border-radius: 0.75rem;
+    border-radius: 0.5rem;
 }
 #keys {
     margin: 1rem 0;
@@ -60,8 +59,8 @@ h1{
     margin: 0.15rem;
     font-size: 2rem;
     font-weight: 700;
-    height: 4rem;
-    width: 4rem;
+    height: 3.5rem;
+    width: 3.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
