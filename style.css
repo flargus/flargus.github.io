@@ -21,8 +21,8 @@ h1{
     flex-direction: column;
 }
 .letter{
-    border: 2px solid rgb(58, 58, 60);
-    margin: 2px;
+    border: 0.15rem solid rgb(58, 58, 60);
+    margin: 0.15rem;
     font-size: 2rem;
     font-family: sans-serif;
     font-weight: 700;
@@ -42,11 +42,11 @@ h1{
     padding: 1rem;
     font-weight: 700;
     font-size: 0.75rem;
-    margin: 0 2px;
+    margin: 0 0.15rem;
     cursor: pointer;
     text-transform: uppercase;
     border: 1px solid black;
-    border-radius: 5px;
+    border-radius: 0.75rem;
 }
 #keys {
     margin: 1rem 0;
@@ -56,8 +56,8 @@ h1{
   }
 .usedBox{
     color: white;
-    border: 2px solid rgb(86, 87, 88);
-    margin: 2px;
+    border: 0.15 solid rgb(86, 87, 88);
+    margin: 0.15rem;
     font-size: 2rem;
     font-weight: 700;
     height: 4rem;
