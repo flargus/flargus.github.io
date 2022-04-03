@@ -92,6 +92,7 @@ function guess(){
         else if (foobar.includes(currentGuess[i])) color = "animateYellow"
         else color = "animateGrey"
         setTimeout(() => {
+            document.getElementById(row.children[i].textContent).classList.add(color)
             row.children[i].classList.add(color)
         }, 300*i);
     }
