@@ -15,7 +15,7 @@
     }
 }
 body{
-    background-color: rgb(18, 18, 19);
+    background: rgb(2,0,36);
 }
 h1{
     color: whitesmoke;
@@ -47,7 +47,7 @@ h1{
     background-color:rgb(129, 131, 132);
     color: whitesmoke;
     font-family: sans-serif;
-    padding: 0.6rem;
+    padding: 0.55rem;
     font-weight: 700;
     font-size: 0.75rem;
     margin: 0 0.15rem;
