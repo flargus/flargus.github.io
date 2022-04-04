@@ -92,9 +92,16 @@ function guess(){
         else if (foobar.includes(currentGuess[i])) color = "animateYellow"
         else color = "animateGrey"
         setTimeout(() => {
+            if(document.getElementById(row.children[i].textContent).classList.contains("animateYellow"))             document.getElementById(row.children[i].textContent).classList.remove("animateYellow")
+        }, 300*i); 
+        setTimeout(() => {
             document.getElementById(row.children[i].textContent).classList.add(color)
             row.children[i].classList.add(color)
+            console.log(document.getElementById(row.children[i].textContent))
         }, 300*i);
+
+        
+
     }
     if(guess === foobar.join("")) {
         return
@@ -113,7 +120,14 @@ function guess(){
 function removeAllClasses(){
     sleep(500)
     let elems = document.getElementById("keys").children
-    elems.forEach(element => {
-        element.removeAllClasses();
-    });
+    for(let j = 0; j < elems.length; j++){
+        let row = elems[j].children
+        for(let i = 0; i < row.length; i++){
+            setTimeout(() => {
+                row[i].classList.remove("animateYellow")
+            }, 1);
+
+        }
+    }
+
 }
