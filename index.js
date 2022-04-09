@@ -1,8 +1,9 @@
-import { words } from "./words.js";
-
+import { words1 } from "./words.js";
+let words = words1
 let guessNumber = 6;
-let guessesRemaining = guessNumber;
+let guessesRemaining = 6;
 let currentGuess = [];
+let playing = true
 let nextLetter = 0;
 let foobar = Array.from("     ")
 menu()
@@ -23,6 +24,7 @@ function menu(){
 }
 document.addEventListener("keyup",(e) =>{
     if(guessesRemaining === 0) return
+    if(!playing) return
     let keyPress = String(e.key)
     if(keyPress === "Backspace" && nextLetter !== 0) {delLetter(); return}
     if(keyPress==="Enter") {guess(); return}
@@ -34,7 +36,8 @@ document.addEventListener("keyup",(e) =>{
 document.getElementById("menu").addEventListener("click",(e)=> {
     if(!e.target.classList.contains("menuButton")) return
     guessNumber = parseInt(e.target.textContent)
-    foobar = Array.from(words.filter(x => x.length === guessNumber)[Math.floor(Math.random() * words.filter(x => x.length === guessNumber).length)])
+    words = words.filter(x => x.length === guessNumber)
+    foobar = Array.from(words[Math.floor(Math.random() * words.length)])
     generateBoard()
     generateKeys()
     document.getElementById("menu").remove()
@@ -50,7 +53,7 @@ document.getElementById("keys").addEventListener("click",(e)=> {
 function insert(x){
     if (currentGuess.length === guessNumber) return
     x = x.toLowerCase()
-    let row = document.getElementsByClassName("row")[guessNumber-guessesRemaining]
+    let row = document.getElementsByClassName("row")[6-guessesRemaining]
     let box = row.children[nextLetter]
     box.textContent = x
     box.classList.add("usedBox")
@@ -59,7 +62,7 @@ function insert(x){
 }
 
 function delLetter(){
-    let row = document.getElementsByClassName("row")[guessNumber-guessesRemaining]
+    let row = document.getElementsByClassName("row")[6-guessesRemaining]
     let box = row.children[nextLetter -1]
     box.textContent = ""
     box.classList.remove("usedBox")
@@ -68,7 +71,6 @@ function delLetter(){
 }
 
 function generateBoard(){
-    guessesRemaining = guessNumber;
     console.log(foobar)
     let board = document.getElementById("board");
     for (let i = 0; i < 6; i++){
@@ -100,12 +102,16 @@ function generateKeys(){
 }
 
 function guess(){
-    let row = document.getElementsByClassName("row")[guessNumber - guessesRemaining]
+    let row = document.getElementsByClassName("row")[6 - guessesRemaining]
     let guess = currentGuess.join('')
     if (row.classList.contains("shake")) row.classList.remove("shake")
     if (guess.length != guessNumber || !words.includes(guess)) { setTimeout(() => {
         row.classList.add("shake");
-    }, 1);  return}
+    }, 1);
+        console.log(guess.length);
+        console.log(words.includes(guess))
+        return
+    }
     for(let i = 0; i < guessNumber; i++){
         let color = "class"
         if(currentGuess[i] === foobar[i]) color = "animateGreen"
@@ -118,11 +124,10 @@ function guess(){
             document.getElementById(row.children[i].textContent).classList.add(color)
             row.children[i].classList.add(color)
         }, 300*i);
-
-        
-
     }
     if(guess === foobar.join("")) {
+        sleep(1000)
+        playing = false
         return
     }
     else{
@@ -131,7 +136,8 @@ function guess(){
         nextLetter = 0
     }
     if(guessesRemaining === 0){
-        document.getElementById("h1").textContent=currentGuess.join('')
+        alert(foobar)
+        document.getElementById("h1").textContent=foobar.join('')
     }
     removeAllClasses();
 }
