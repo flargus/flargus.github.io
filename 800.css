@@ -24,13 +24,6 @@ h1{
     font-size: 2.5rem;
     text-align: center;
 }
-h2{
-    color: whitesmoke;
-    font-family: sans-serif;
-    right: 0;
-    font-size: 1.5rem;
-    text-align: center;
-}
 #menu {
     margin: 1rem 1rem;
     display: flex;
@@ -48,15 +41,15 @@ h2{
     font-size: 2rem;
     font-family: sans-serif;
     font-weight: 700;
-    height: 4rem;
-    width: 4rem;
+    height: 2rem;
+    width: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
     text-transform: uppercase;
 
 }
-.button{
+.menuButton{
     background-color:rgb(129, 131, 132);
     color: whitesmoke;
     font-family: sans-serif;
@@ -66,23 +59,20 @@ h2{
     margin: 0 0.15rem;
     cursor: pointer;
     text-transform: uppercase;
-    border: 1px solid black;
+    border: 0.25rem solid rgb(255, 255, 255);
     border-radius: 0.5rem;
 }
-.menuButton{
-    background-color:rgb(58, 58, 58);
+.button{
+    background-color:rgb(129, 131, 132);
     color: whitesmoke;
     font-family: sans-serif;
-    padding: 1rem;
+    padding: 0.55rem;
     font-weight: 700;
-    font-size: 2rem;
-    margin: 0 1rem;
-    height: 3rem;
-    width: 3rem;
-    text-align: center;
+    font-size: 0.75rem;
+    margin: 0 0.15rem;
     cursor: pointer;
     text-transform: uppercase;
-    border: 0.25rem solid rgb(255, 255, 255);
+    border: 1px solid black;
     border-radius: 0.5rem;
 }
 #keys {
@@ -97,8 +87,8 @@ h2{
     margin: 0.15rem;
     font-size: 2rem;
     font-weight: 700;
-    height: 4rem;
-    width: 4rem;
+    height: 2rem;
+    width: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
