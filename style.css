@@ -15,7 +15,7 @@
     }
 }
 body{
-    background: rgb(2,0,36);
+    background: rgb(20, 20, 20);
 }
 h1{
     color: whitesmoke;
@@ -24,6 +24,12 @@ h1{
     font-size: 2.5rem;
     text-align: center;
 }
+#menu {
+    margin: 1rem 1rem;
+    display: flex;
+    align-items:center;
+    flex-direction: column;
+  }
 #board{
     display: flex;
     align-items: center;
@@ -35,13 +41,26 @@ h1{
     font-size: 2rem;
     font-family: sans-serif;
     font-weight: 700;
-    height: 3.5rem;
-    width: 3.5rem;
+    height: 2rem;
+    width: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
     text-transform: uppercase;
 
+}
+.menuButton{
+    background-color:rgb(129, 131, 132);
+    color: whitesmoke;
+    font-family: sans-serif;
+    padding: 1.25rem;
+    font-weight: 700;
+    font-size: 1rem;
+    margin: 0 0.15rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    border: 0.25rem solid rgb(255, 255, 255);
+    border-radius: 0.5rem;
 }
 .button{
     background-color:rgb(129, 131, 132);
@@ -68,8 +87,8 @@ h1{
     margin: 0.15rem;
     font-size: 2rem;
     font-weight: 700;
-    height: 3.5rem;
-    width: 3.5rem;
+    height: 2rem;
+    width: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
