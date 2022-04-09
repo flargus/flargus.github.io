@@ -1,16 +1,25 @@
 import { words } from "./words.js";
 
-const guessNumber = 6;
+let guessNumber = 6;
 let guessesRemaining = guessNumber;
 let currentGuess = [];
 let nextLetter = 0;
-let foobar = Array.from(words[Math.floor(Math.random() * words.length)])
-console.log(foobar.join(''))
-generateBoard();
-generateKeys();
+let foobar = Array.from("     ")
+menu()
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function menu(){
+    let board = document.getElementById("menu");
+    for (let i = 4; i < 9; i++){
+        let box = document.createElement("div")
+        box.textContent = i
+        box.className = "menuButton"
+        board.appendChild(box)
+        box.id = i
+    }
 }
 document.addEventListener("keyup",(e) =>{
     if(guessesRemaining === 0) return
@@ -22,6 +31,15 @@ document.addEventListener("keyup",(e) =>{
     else insert(keyPress)
 })
 
+document.getElementById("menu").addEventListener("click",(e)=> {
+    if(!e.target.classList.contains("menuButton")) return
+    guessNumber = parseInt(e.target.textContent)
+    foobar = Array.from(words.filter(x => x.length === guessNumber)[Math.floor(Math.random() * words.filter(x => x.length === guessNumber).length)])
+    generateBoard()
+    generateKeys()
+    document.getElementById("menu").remove()
+})
+
 document.getElementById("keys").addEventListener("click",(e)=> {
     if(!e.target.classList.contains("button")) return
     if(e.target.textContent === "backspace") e.target.textContent = "Backspace"
@@ -30,9 +48,9 @@ document.getElementById("keys").addEventListener("click",(e)=> {
 })
 
 function insert(x){
-    if (currentGuess.length === 5) return
+    if (currentGuess.length === guessNumber) return
     x = x.toLowerCase()
-    let row = document.getElementsByClassName("row")[6-guessesRemaining]
+    let row = document.getElementsByClassName("row")[guessNumber-guessesRemaining]
     let box = row.children[nextLetter]
     box.textContent = x
     box.classList.add("usedBox")
@@ -41,7 +59,7 @@ function insert(x){
 }
 
 function delLetter(){
-    let row = document.getElementsByClassName("row")[6-guessesRemaining]
+    let row = document.getElementsByClassName("row")[guessNumber-guessesRemaining]
     let box = row.children[nextLetter -1]
     box.textContent = ""
     box.classList.remove("usedBox")
@@ -50,11 +68,13 @@ function delLetter(){
 }
 
 function generateBoard(){
+    guessesRemaining = guessNumber;
+    console.log(foobar)
     let board = document.getElementById("board");
-    for (let i = 0; i < guessNumber; i++){
+    for (let i = 0; i < 6; i++){
         let row = document.createElement("div")
         row.className = "row"
-        for (let j = 0; j < 5; j++){
+        for (let j = 0; j < guessNumber; j++){
             let box = document.createElement("div")
             box.className = "letter"
             row.appendChild(box)
@@ -80,24 +100,23 @@ function generateKeys(){
 }
 
 function guess(){
-    let row = document.getElementsByClassName("row")[6 - guessesRemaining]
+    let row = document.getElementsByClassName("row")[guessNumber - guessesRemaining]
     let guess = currentGuess.join('')
     if (row.classList.contains("shake")) row.classList.remove("shake")
-    if (guess.length != 5 || !words.includes(guess)) { setTimeout(() => {
+    if (guess.length != guessNumber || !words.includes(guess)) { setTimeout(() => {
         row.classList.add("shake");
     }, 1);  return}
-    for(let i = 0; i < 5; i++){
+    for(let i = 0; i < guessNumber; i++){
         let color = "class"
         if(currentGuess[i] === foobar[i]) color = "animateGreen"
         else if (foobar.includes(currentGuess[i])) color = "animateYellow"
         else color = "animateGrey"
         setTimeout(() => {
             if(document.getElementById(row.children[i].textContent).classList.contains("animateYellow"))             document.getElementById(row.children[i].textContent).classList.remove("animateYellow")
-        }, 300*i); 
+        }, 300*i);
         setTimeout(() => {
             document.getElementById(row.children[i].textContent).classList.add(color)
             row.children[i].classList.add(color)
-            console.log(document.getElementById(row.children[i].textContent))
         }, 300*i);
 
         
