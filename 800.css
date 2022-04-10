@@ -36,11 +36,13 @@ h2{
     display: flex;
     align-items:center;
     flex-direction: column;
-  }
+    animation: dropin 2s;
+}
 #board{
     display: flex;
     align-items: center;
     flex-direction: column;
+    animation: dropin 1s;
 }
 .letter{
     border: 0.15rem solid rgb(58, 58, 60);
@@ -68,6 +70,7 @@ h2{
     text-transform: uppercase;
     border: 1px solid black;
     border-radius: 0.5rem;
+    animation: dropin 1.10s;
 }
 .menuButton{
     background-color:rgb(58, 58, 58);
@@ -219,6 +222,16 @@ h2{
         transform: translateY(-0.1rem);
     }
     100%{
+        transform: translateY(0);
+    }
+}
+@keyframes dropin {
+    0%{
+        opacity: 0;
+        transform: translateY(-1rem);
+    }
+    100%{
+        opacity: 100;
         transform: translateY(0);
     }
 }
