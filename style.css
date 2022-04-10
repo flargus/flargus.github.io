@@ -29,11 +29,13 @@ h1{
     display: flex;
     align-items:center;
     flex-direction: column;
+    animation: dropin 2s;
   }
 #board{
     display: flex;
     align-items: center;
     flex-direction: column;
+    animation: dropin 1s;
 }
 h2{
     color: whitesmoke;
@@ -54,7 +56,7 @@ h2{
     justify-content: center;
     align-items: center;
     text-transform: uppercase;
-
+    
 }
 .menuButton{
     background-color:rgb(129, 131, 132);
@@ -81,6 +83,7 @@ h2{
     text-transform: uppercase;
     border: 1px solid black;
     border-radius: 0.5rem;
+    animation: dropin 1.15s;
 }
 #keys {
     margin: 1rem 0;
@@ -219,3 +222,14 @@ h2{
         transform: translateY(0);
     }
 }
+@keyframes dropin {
+    0%{
+        opacity: 0;
+        transform: translateY(-1rem);
+    }
+    100%{
+        opacity: 100;
+        transform: translateY(0);
+    }
+}
+
