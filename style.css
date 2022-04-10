@@ -35,6 +35,13 @@ h1{
     align-items: center;
     flex-direction: column;
 }
+h2{
+    color: whitesmoke;
+    font-family: sans-serif;
+    right: 0;
+    font-size: 1.5rem;
+    text-align: center;
+}
 .letter{
     border: 0.15rem solid rgb(58, 58, 60);
     margin: 0.15rem;
