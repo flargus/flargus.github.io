@@ -1,3 +1,4 @@
+import { popWords } from "./popWords.js";
 import { words1 } from "./words.js";
 let words = words1
 let guessNumber = 6;
@@ -36,8 +37,8 @@ document.addEventListener("keyup",(e) =>{
 document.getElementById("menu").addEventListener("click",(e)=> {
     if(!e.target.classList.contains("menuButton")) return
     guessNumber = parseInt(e.target.textContent)
-    words = words.filter(x => x.length === guessNumber)
-    foobar = Array.from(words[Math.floor(Math.random() * words.length)])
+    popWords1 = popWords.filter(x => x.length === guessNumber)
+    foobar = Array.from(popWords1[Math.floor(Math.random() * words.length)])
     generateBoard()
     generateKeys()
     document.getElementById("menu").remove()
