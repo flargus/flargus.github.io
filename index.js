@@ -1,6 +1,7 @@
 import { popWords } from "./popWords.js";
 import { words1 } from "./words.js";
 let words = words1
+let popWords1 = popWords
 let guessNumber = 6;
 let guessesRemaining = 6;
 let currentGuess = [];
@@ -38,7 +39,10 @@ document.getElementById("menu").addEventListener("click",(e)=> {
     if(!e.target.classList.contains("menuButton")) return
     guessNumber = parseInt(e.target.textContent)
     popWords1 = popWords.filter(x => x.length === guessNumber)
-    foobar = Array.from(popWords1[Math.floor(Math.random() * words.length)])
+    console.log(popWords)
+    console.log(popWords1)
+
+    foobar = Array.from(popWords1[Math.floor(Math.random() * popWords1.length)])
     generateBoard()
     generateKeys()
     document.getElementById("menu").remove()
