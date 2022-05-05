@@ -28,7 +28,7 @@ document.addEventListener("keyup",(e) =>{
     if(guessesRemaining === 0) return
     if(!playing) return
     let keyPress = String(e.key)
-    if(keyPress === "Backspace" && nextLetter !== 0) {delLetter(); return}
+    if(keyPress === "⌫" && nextLetter !== 0) {delLetter(); return}
     if(keyPress==="Enter") {guess(); return}
     let keyFound = keyPress.match(/[a-z]/i)
     if(!keyFound || keyPress.length > 1) return
@@ -36,6 +36,7 @@ document.addEventListener("keyup",(e) =>{
 })
 
 document.getElementById("menu").addEventListener("click",(e)=> {
+    document.getElementById("removeable").remove();
     if(!e.target.classList.contains("menuButton")) return
     guessNumber = parseInt(e.target.textContent)
     popWords1 = popWords.filter(x => x.length === guessNumber)
@@ -50,7 +51,7 @@ document.getElementById("menu").addEventListener("click",(e)=> {
 
 document.getElementById("keys").addEventListener("click",(e)=> {
     if(!e.target.classList.contains("button")) return
-    if(e.target.textContent === "backspace") e.target.textContent = "Backspace"
+    if(e.target.textContent === "⌫") e.target.textContent = "⌫"
     if(e.target.textContent === "enter") e.target.textContent = "Enter"
     document.dispatchEvent(new KeyboardEvent("keyup", {'key':e.target.textContent}))
 })
@@ -84,6 +85,9 @@ function generateBoard(){
         for (let j = 0; j < guessNumber; j++){
             let box = document.createElement("div")
             box.className = "letter"
+            console.log("god is dead")
+            box.style.height = (12-guessNumber).toString() + "vh"
+            box.style.width = (12-guessNumber).toString() + "vh"
             row.appendChild(box)
         }
         board.appendChild(row)
@@ -91,7 +95,7 @@ function generateBoard(){
 }
 function generateKeys(){
     let panel = document.getElementById("keys")
-    let rows  = [ Array.from("qwertyuiop"), Array.from("asdfghjkl"), Array.prototype.concat("enter",Array.from("zxcvbnm"),"backspace") ]
+    let rows  = [ Array.from("qwertyuiop"), Array.from("asdfghjkl"), Array.prototype.concat("enter",Array.from("zxcvbnm"),"⌫") ]
     rows.forEach(x => {
         let row = document.createElement("div")
         row.className="keyrow"
@@ -113,8 +117,6 @@ function guess(){
     if (guess.length != guessNumber || !words.includes(guess)) { setTimeout(() => {
         row.classList.add("shake");
     }, 1);
-        console.log(guess.length);
-        console.log(words.includes(guess))
         return
     }
     for(let i = 0; i < guessNumber; i++){
